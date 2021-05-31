@@ -16,9 +16,10 @@ class Mailing extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $unsubscribeLink;
+    public function __construct($unsubscribeLink)
     {
-        //
+        $this->unsubscribeLink = $unsubscribeLink;
     }
 
     /**
@@ -28,6 +29,6 @@ class Mailing extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.mailing');
+        return $this->view('mail.mailing',['mail'=>$this->unsubscribeLink]);
     }
 }
